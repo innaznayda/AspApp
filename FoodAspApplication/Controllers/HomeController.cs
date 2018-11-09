@@ -1,13 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
+using FoodAspApplication.Services;
 
 namespace FoodAspApplication.Controllers {
-    public class HomeController {
+    public class HomeController : Controller {
+        public IRestaurantData RestaurantData;
 
-        public string Index() {
-            return "Hello from home controller! ";
+        public HomeController(IRestaurantData restaurantData) {
+           RestaurantData = restaurantData;
+        }
+
+        
+
+        public IActionResult Index() {
+
+            var model = RestaurantData.GetAll();
+            return View(model);
         }
     }
 }

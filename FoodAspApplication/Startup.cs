@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
+using FoodAspApplication.Services;
 
 namespace FoodAspApplication {
     public class Startup {
@@ -12,6 +13,7 @@ namespace FoodAspApplication {
         public void ConfigureServices(IServiceCollection services) {
             services.AddSingleton<IGreeter, Greeter>();
             services.AddMvc();
+            services.AddScoped<IRestaurantData,InMemoryRestaurantData>();
 
 
         }

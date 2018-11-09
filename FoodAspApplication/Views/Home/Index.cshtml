@@ -1,0 +1,16 @@
+﻿@model IEnumerable<FoodAspApplication.Models.Restaurant>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table>
+        @foreach (var rest in Model) {
+        <tr>
+            <td>@rest.Name</td>
+            <td>@rest.Id</td>
+        </tr>}
+    </table>
+</body>
+</html>

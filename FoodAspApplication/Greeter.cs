@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using FoodAspApplication.Services;
 
 namespace FoodAspApplication {
     internal class Greeter : IGreeter {
