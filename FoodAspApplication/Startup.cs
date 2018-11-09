@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FoodAspApplication {
@@ -24,17 +22,25 @@ namespace FoodAspApplication {
                 app.UseDeveloperExceptionPage();
             }
 
+            
+
             app.UseWelcomePage(new WelcomePageOptions {
                 Path = "/welcome"
             });
 
-            app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+            //app.UseStaticFiles();
+            app.UseMvc(ConfigureRoute);
 
             app.Run(async (context) => {
                 string greeting = greeter.GetMessageOfTheDay();
                 await context.Response.WriteAsync($"{greeting} ");
             });
+        }
+
+        private void ConfigureRoute(IRouteBuilder routeBuilder) {
+            // Home/Index
+            routeBuilder.MapRoute("Default", "{controller=Home}/{action=Index}/{id?}");
+
         }
     }
 }
