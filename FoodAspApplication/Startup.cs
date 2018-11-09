@@ -26,6 +26,8 @@ namespace FoodAspApplication {
                 Path = "/welcome"
             });
 
+            app.UseDefaultFiles(); 
+            app.UseStaticFiles();
 
             app.Run(async (context) => {
                 string greeting = greeter.GetMessageOfTheDay();
