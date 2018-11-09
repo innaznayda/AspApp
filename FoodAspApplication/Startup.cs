@@ -20,6 +20,10 @@ namespace FoodAspApplication {
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseWelcomePage(new WelcomePageOptions {
+                Path = "/welcome"
+            });
+
             app.Run(async (context) => {
                 await context.Response.WriteAsync("Hello World!");
             });
