@@ -28,7 +28,8 @@ namespace FoodAspApplication {
 
 
             app.Run(async (context) => {
-                await context.Response.WriteAsync(greeter.GetMessageOfTheDay());
+                string greeting = greeter.GetMessageOfTheDay();
+                await context.Response.WriteAsync($"{greeting} ");
             });
         }
     }
