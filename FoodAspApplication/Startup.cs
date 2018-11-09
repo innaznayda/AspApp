@@ -13,6 +13,8 @@ namespace FoodAspApplication {
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services) {
             services.AddSingleton<IGreeter, Greeter>();
+            services.AddMvc();
+
 
         }
 
@@ -26,8 +28,8 @@ namespace FoodAspApplication {
                 Path = "/welcome"
             });
 
-            app.UseDefaultFiles(); 
             app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) => {
                 string greeting = greeter.GetMessageOfTheDay();
