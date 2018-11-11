@@ -1,16 +1,20 @@
-﻿@model IEnumerable<FoodAspApplication.Models.Restaurant>
+﻿@model FoodAspApplication.ViewModels.HomeIndexViewModel
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
 </head>
 <body>
+    <h1>@Model.CurrentMessage</h1>
     <table>
-        @foreach (var rest in Model) {
+        @foreach (var rest in @Model.Restaurants) {
         <tr>
             <td>@rest.Name</td>
             <td>@rest.Id</td>
-        </tr>}
+        
+            <td>
+            <a asp-action="Details" asp-route-id="@rest.Id">More...</a>
+               </td>        </tr>}
     </table>
 </body>
 </html>
