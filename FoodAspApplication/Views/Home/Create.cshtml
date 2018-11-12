@@ -1,0 +1,11 @@
+﻿@using FoodAspApplication.Models
+@model FoodAspApplication.Models.Restaurant
+
+<h1>Create</h1>
+
+<form method="post">
+    <input asp-for="Name" />
+    <select asp-for="CuisineType" asp-items="@Html.GetEnumSelectList<CuisineType>()"></select>
+    <input type="Submit" name="save" value="Save" />
+</form>
+

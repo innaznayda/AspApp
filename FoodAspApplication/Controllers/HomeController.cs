@@ -8,10 +8,10 @@ namespace FoodAspApplication.Controllers {
         private IGreeter Greeter;
 
         public HomeController(IRestaurantData restaurantData, IGreeter greeter) {
-           RestaurantData = restaurantData;
-           Greeter = greeter;
+            RestaurantData = restaurantData;
+            Greeter = greeter;
         }
-            
+
         public IActionResult Index() {
             var model = new HomeIndexViewModel();
             model.Restaurants = RestaurantData.GetAll();
@@ -19,18 +19,19 @@ namespace FoodAspApplication.Controllers {
             return View(model);
         }
 
-        public IActionResult Details (int id)   
-      {
+        public IActionResult Details(int id) {
             var model = RestaurantData.Get(id);
-            if (model == null)
-            {
-               return RedirectToAction(nameof(Index));
+            if (model == null) {
+                return RedirectToAction(nameof(Index));
 
-            }
-            else
-            {
+            } else {
                 return View(model);
             }
         }
+
+        public IActionResult Create() {
+            return View();
+        }
+
     }
 }
