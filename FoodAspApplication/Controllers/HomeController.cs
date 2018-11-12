@@ -37,12 +37,16 @@ namespace FoodAspApplication.Controllers {
 
         [HttpPost]
         public IActionResult Create(RestaurantEditModel restaurant) {
-            var newRestaurant = new Restaurant();
-            newRestaurant.Name = restaurant.Name;
-            newRestaurant.Cuisine = restaurant.Cuisine;
+            if (ModelState.IsValid) {
+                var newRestaurant = new Restaurant();
+                newRestaurant.Name = restaurant.Name;
+                newRestaurant.Cuisine = restaurant.Cuisine;
 
-            newRestaurant = RestaurantData.Add(newRestaurant);
-            return RedirectToAction(nameof(Details), new { id = newRestaurant.Id });
+                newRestaurant = RestaurantData.Add(newRestaurant);
+                return RedirectToAction(nameof(Details), new { id = newRestaurant.Id });
+            } else {
+                return View();
+            }
 
         }
 
