@@ -10,6 +10,12 @@ namespace FoodAspApplication.Services {
                 new Restaurant{ Id = 3, Name = "Burger King"}
             };
 
+        public Restaurant Add(Restaurant newRestaurant) {
+            newRestaurant.Id = Restaurants.Max(r => r.Id) + 1;
+            Restaurants.Add(newRestaurant);
+            return newRestaurant;
+        }
+
         public Restaurant Get(int id)
         {
             

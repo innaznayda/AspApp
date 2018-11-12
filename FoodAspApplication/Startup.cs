@@ -12,8 +12,8 @@ namespace FoodAspApplication {
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services) {
             services.AddSingleton<IGreeter, Greeter>();
+            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
             services.AddMvc();
-            services.AddScoped<IRestaurantData,InMemoryRestaurantData>();
 
 
         }
@@ -24,7 +24,7 @@ namespace FoodAspApplication {
                 app.UseDeveloperExceptionPage();
             }
 
-            
+
 
             app.UseWelcomePage(new WelcomePageOptions {
                 Path = "/welcome"

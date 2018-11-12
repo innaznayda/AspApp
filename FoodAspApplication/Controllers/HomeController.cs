@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using FoodAspApplication.Services;
 using FoodAspApplication.ViewModels;
+using FoodAspApplication.Models;
 
 namespace FoodAspApplication.Controllers {
     public class HomeController : Controller {
@@ -29,8 +30,19 @@ namespace FoodAspApplication.Controllers {
             }
         }
 
+        [HttpGet]
         public IActionResult Create() {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(RestaurantEditModel restaurant) {
+            var newRestaurant = new Restaurant();
+            newRestaurant.Name = restaurant.Name;
+            newRestaurant.Cuisine = restaurant.Cuisine;
+
+            newRestaurant = RestaurantData.Add(newRestaurant);
+            return View("Details", newRestaurant);
         }
 
     }
