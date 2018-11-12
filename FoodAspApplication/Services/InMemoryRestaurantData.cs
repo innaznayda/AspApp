@@ -3,7 +3,7 @@ using System.Linq;
 using FoodAspApplication.Models;
 
 namespace FoodAspApplication.Services {
-    public class InMemoryRestaurantData : IRestaurantData {
+    public class InMemoryRestaurantData /*: IRestaurantData */{
         List<Restaurant> Restaurants = new List<Restaurant> {
                 new Restaurant{ Id = 1, Name = "Hanami"},
                 new Restaurant{ Id = 2, Name = "Il Molino"},

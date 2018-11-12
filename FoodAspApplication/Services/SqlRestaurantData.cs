@@ -24,5 +24,11 @@ namespace FoodAspApplication.Services {
         public IEnumerable<Restaurant> GetAll() {
             return Context.Restaurants.OrderBy(r=>r.Name);
         }
+
+        public Restaurant Update(Restaurant restaurant) {
+            Context.Attach(restaurant).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            Context.SaveChanges();
+            return restaurant;
+        }
     }
 }
