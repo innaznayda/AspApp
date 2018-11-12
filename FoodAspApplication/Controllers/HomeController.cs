@@ -42,7 +42,8 @@ namespace FoodAspApplication.Controllers {
             newRestaurant.Cuisine = restaurant.Cuisine;
 
             newRestaurant = RestaurantData.Add(newRestaurant);
-            return View("Details", newRestaurant);
+            return RedirectToAction(nameof(Details), new { id = newRestaurant.Id });
+
         }
 
     }
